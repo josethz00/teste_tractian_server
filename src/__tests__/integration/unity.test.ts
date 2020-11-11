@@ -13,7 +13,7 @@ describe ('UnityController tests', () => {
   it('Should create unities, and return a succesfull code', async () => {
 
     const response = await request(app).post('/unities/store')
-      .set('companyId', '5fac461517ed902f775cd132')
+      .set('company_id', '5fac461517ed902f775cd132')
       .send({
         name: 'Unidade 1'
       });
@@ -25,7 +25,7 @@ describe ('UnityController tests', () => {
   it('Should return an error message, because the unity ID specified does not exists', async () => {
 
     const response = await request(app).post('/unities/store')
-      .set('companyId', '5fac4fd6796d5ab58a302d93')
+      .set('company_id', '5fac4fd6796d5ab58a302d93')
       .send({
         name: 'Unidade 3'
       });
@@ -36,9 +36,11 @@ describe ('UnityController tests', () => {
 
   it('Should create unities, and return a succesfull text', async () => {
 
-    const response = await request(app).post('/unities/store').send({
-      name: 'Unidade 2'
-    });
+    const response = await request(app).post('/unities/store')
+      .set('company_id', '5fac461517ed902f775cd132')
+      .send({
+        name: 'Unidade 2'
+      });
     expect(response.text).toBe('Unidade cadastrada com sucesso');
 
   });

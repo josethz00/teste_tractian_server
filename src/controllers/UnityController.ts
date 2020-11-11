@@ -19,6 +19,8 @@ class UnityController {
       const { name } = request.body;
       const { company_id } = request.headers;
 
+      console.log(request.headers, company_id);
+
       const company = await Company.findById(company_id);
 
       if (company) {
