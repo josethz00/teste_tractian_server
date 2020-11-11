@@ -3,17 +3,12 @@ import { ObjectID } from 'mongodb';
 
 
 interface ICompany extends mongoose.Document {
-  _id: ObjectID;
   name: string;
-  unity: Array<ObjectID>;
+  unity?: Array<ObjectID>;
 };
 
 const CompanySchema = new Schema ({
 
-  _id: {
-    type: ObjectID,
-    required: true
-  },
   name: {
     type: String,
     required: true

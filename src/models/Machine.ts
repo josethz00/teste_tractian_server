@@ -3,7 +3,6 @@ import { ObjectID } from 'mongodb';
 
 
 interface IMachine extends mongoose.Document {
-  _id: ObjectID;
   name: string;
   description: string;
   image_url: string;
@@ -16,10 +15,6 @@ interface IMachine extends mongoose.Document {
 
 const MachineSchema = new Schema ({
 
-  _id: {
-    type: ObjectID,
-    required: true
-  },
   name: {
     type: String,
     required: true
