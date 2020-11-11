@@ -6,7 +6,7 @@ class UserController {
   async index (_request: Request, response: Response) {
 
     const user = await User.find();
-    return response.json(user);
+    return response.status(200).json(user);
 
   }
 
@@ -21,7 +21,7 @@ class UserController {
     }
 
     catch (error) {
-      next(error)
+      next(error);
     }
 
   }

@@ -4,7 +4,7 @@ import { ObjectID } from 'mongodb';
 
 interface IUnity extends mongoose.Document {
   name: string;
-  machines: Array<ObjectID>;
+  machines?: Array<ObjectID>;
 };
 
 const UnitySchema = new Schema ({

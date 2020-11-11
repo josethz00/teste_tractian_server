@@ -6,7 +6,16 @@ class CompanyController {
   async index (_request: Request, response: Response) {
 
     const company = await Company.find();
-    return response.json(company);
+    return response.status(200).json(company);
+
+  }
+
+  async queryOne (request: Request, response: Response) {
+
+    const { _id } = request.params;
+
+    const company = await Company.findById(_id).populate('Unity');
+    return response.status(200).json(company);
 
   }
 
@@ -21,7 +30,7 @@ class CompanyController {
     }
 
     catch (error) {
-      next(error)
+      next(error);
     }
 
   }
