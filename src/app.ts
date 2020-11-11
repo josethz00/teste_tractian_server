@@ -3,6 +3,7 @@ dotenv.config({
   path: process.env.NODE_ENV == 'test' ? '.env.test' : '.env'
 });
 import express, { NextFunction, Request, Response } from 'express';
+import cors from 'cors';
 import { routes } from './routes';
 import mongoose from 'mongoose';
 import { MONGODB } from  './config/mongo';
@@ -11,6 +12,7 @@ mongoose.connect(MONGODB!, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(routes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
