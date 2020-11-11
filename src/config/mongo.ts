@@ -1,1 +1,1 @@
-export const MONGODB = 'mongodb+srv://josethz00:fljtjvle@devcluster.u6g0p.mongodb.net/teste_tr?retryWrites=true&w=majority'
+export const MONGODB = process.env.MONGO_DB_URL

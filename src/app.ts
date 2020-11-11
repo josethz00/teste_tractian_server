@@ -1,9 +1,13 @@
+import * as dotenv from 'dotenv';
+dotenv.config({
+  path: process.env.NODE_ENV == 'test' ? '.env.test' : '.env'
+});
 import express, { NextFunction, Request, Response } from 'express';
 import { routes } from './routes';
 import mongoose from 'mongoose';
 import { MONGODB } from  './config/mongo';
 
-mongoose.connect(MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB!, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 app.use(express.json());

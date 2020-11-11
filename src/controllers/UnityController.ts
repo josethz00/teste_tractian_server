@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { Company } from '../models/Company';
 import { Unity } from '../models/Unity';
-import { ObjectID } from 'mongodb';
+
 
 class UnityController {
 
@@ -17,9 +17,9 @@ class UnityController {
     try {
 
       const { name } = request.body;
-      const { companyId } = request.headers;
+      const { company_id } = request.headers;
 
-      const company = await Company.findById(companyId);
+      const company = await Company.findById(company_id);
 
       if (company) {
 

@@ -3,6 +3,7 @@ import { Unity } from '../models/Unity';
 import { Machine } from '../models/Machine';
 import { User } from '../models/User';
 
+
 class MachineController {
 
   async index (_request: Request, response: Response) {
@@ -18,12 +19,12 @@ class MachineController {
 
       const file = request.file as Express.Multer.File;
 
-      const { userId, unityId } = request.headers;
+      const { user_id, unity_id } = request.headers;
 
       const { name, description, machine_model, health_score, status } = request.body;
 
-      const _unity = await Unity.findById(unityId);
-      const _user = await User.findById(userId);
+      const _unity = await Unity.findById(unity_id);
+      const _user = await User.findById(user_id);
 
 
       if (_unity && _user) {

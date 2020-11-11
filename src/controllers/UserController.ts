@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { User } from '../models/User';
 
+
 class UserController {
 
   async index (_request: Request, response: Response) {

@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { Company } from '../models/Company';
 
+
 class CompanyController {
 
   async index (_request: Request, response: Response) {
@@ -12,9 +13,8 @@ class CompanyController {
 
   async queryOne (request: Request, response: Response) {
 
-    const { _id } = request.params;
-
-    const company = await Company.findById(_id).populate('Unity');
+    const { id } = request.params;
+    const company = await Company.findById(id).populate('Unity');
     return response.status(200).json(company);
 
   }
