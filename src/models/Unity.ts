@@ -1,10 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
-import { ObjectID } from 'mongodb';
 
 
 interface IUnity extends mongoose.Document {
   name: string;
-  machines?: Array<ObjectID>;
+  machines?: Array<mongoose.Schema.Types.ObjectId>;
 };
 
 const UnitySchema = new Schema ({
@@ -14,10 +13,10 @@ const UnitySchema = new Schema ({
     required: true
   },
   machines: [{
-    type: ObjectID,
-    ref: 'Machine'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Unity'
   }]
 
 });
 
-export const Unity = mongoose.model<IUnity>('Unity', UnitySchema);
+export const Unity = mongoose.model<IUnity>('Unity', UnitySchema, 'Unity');

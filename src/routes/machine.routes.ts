@@ -11,6 +11,7 @@ const upload = multer(multerConfig);
 
 machineRoutes.get('/index', machineController.index);
 machineRoutes.post('/store', upload.single('file'), machineController.store);
+machineRoutes.get('/score', machineController.queryScore);
 
 
 

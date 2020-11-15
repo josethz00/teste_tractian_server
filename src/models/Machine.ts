@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { ObjectID } from 'mongodb';
 
 
 interface IMachine extends mongoose.Document {
@@ -8,8 +7,8 @@ interface IMachine extends mongoose.Document {
   image_url: string;
   machine_model: string;
   health_score: number;
-  unity: ObjectID;
-  user: ObjectID;
+  unity: mongoose.Schema.Types.ObjectId;
+  user: mongoose.Schema.Types.ObjectId;
   status: string;
 };
 
@@ -36,12 +35,12 @@ const MachineSchema = new Schema ({
     required: true
   },
   unity: {
-    type: ObjectID,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Unity',
     required: true
   },
   user: {
-    type: ObjectID,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
@@ -52,4 +51,4 @@ const MachineSchema = new Schema ({
 
 });
 
-export const Machine = mongoose.model<IMachine>('Machine', MachineSchema);
+export const Machine = mongoose.model<IMachine>('Machine', MachineSchema, 'Machine');

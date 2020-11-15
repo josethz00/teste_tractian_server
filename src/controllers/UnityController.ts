@@ -3,12 +3,28 @@ import { Company } from '../models/Company';
 import { Unity } from '../models/Unity';
 
 
+interface UnityProps {
+
+  _id: string;
+  name: string;
+
+}
+
+
 class UnityController {
 
   async index (_request: Request, response: Response) {
 
-    const unity = await Unity.find();
-    return response.status(200).json(unity);
+    const queryUnities = await Unity.find();
+    let variable: UnityProps | null = null;
+    let unities: UnityProps[] = [];
+    for (variable of queryUnities) {
+      unities.push({
+        _id: variable._id,
+        name: variable.name
+      });
+    }
+    return response.status(200).json(unities);
 
   }
 
@@ -18,6 +34,7 @@ class UnityController {
 
       const { name } = request.body;
       const { company_id } = request.headers;
+
 
       const company = await Company.findById(company_id);
 

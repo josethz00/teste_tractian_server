@@ -1,10 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
-import { ObjectID } from 'mongodb';
 
 
 interface ICompany extends mongoose.Document {
   name: string;
-  unity?: Array<ObjectID>;
+  unity?: Array<mongoose.Schema.Types.ObjectId>;
 };
 
 const CompanySchema = new Schema ({
@@ -14,10 +13,10 @@ const CompanySchema = new Schema ({
     required: true
   },
   unity: [{
-    type: ObjectID,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Unity'
   }]
 
 });
 
-export const Company = mongoose.model<ICompany>('Company', CompanySchema);
+export const Company = mongoose.model<ICompany>('Company', CompanySchema, 'Company');
